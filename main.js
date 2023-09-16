@@ -4,8 +4,6 @@
 
 // usuario seleccionar 1 actor ==> 1 decada (opcional) ==> return 1 pelicula al azar
 
-// contener: IF, IF ELSE // FOR, WHILE, DO... WHILE // FUNCTIONS // OBJECTS (OPCIONAL)
-
 
 function Actor(name, decade1, decade2, decade3, movie1, movie2, movie3) {
     this.name = name;
@@ -23,8 +21,9 @@ const actor2 = new Actor("robert de niro", "1970s", "1980s", "1990s", "Taxi driv
 
 const actor3 = new Actor("sylvester stallone", "1970s", "1980s", "1990s", "Rocky (1976)", "Rambo (1982)", "Demolition man (1993)")
 
+alert("Welcome to Movie Randomizer :D")
 
-let userActor = prompt("Select one of the following actors: Adam Sandler, Robert De Niro or Sylvester Stallone").toLowerCase();
+let userActor = prompt(`Select one of the following actors: Adam Sandler, Robert De Niro or Sylvester Stallone`).toLowerCase();
 
 
 while (userActor != actor1.name && userActor != actor2.name && userActor != actor3.name) {
@@ -47,7 +46,7 @@ while (userActor != actor1.name && userActor != actor2.name && userActor != acto
     }
     userActor = prompt("Select one of the following actors: Adam Sandler, Robert De Niro or Sylvester Stallone").toLowerCase();
 }
-debugger
+
 if (userActor === actor1.name) {
     let userDecade = prompt(`Select one of the following decades: ${actor1.decade1}, ${actor1.decade2}, ${actor1.decade3}. To skip press enter.`).toLowerCase()
     
