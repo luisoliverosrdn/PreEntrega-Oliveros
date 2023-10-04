@@ -1,112 +1,122 @@
 // Simulador "movies randomizer"
 
-// 3 actores ==> 3 peliculas ==> 3 decadas diferentes ==> 3 peliculas de cada decada
+// 3 actores ==> 3 peliculas ==> 3 decadas diferentes ==> 2 peliculas de cada decada
 
 // usuario seleccionar 1 actor ==> 1 decada (opcional) ==> return 1 pelicula al azar
 
-
-function Actor(name, decade1, decade2, decade3, movie1, movie2, movie3) {
+function Movie(name,year, actorName){
     this.name = name;
-    this.decade1 = decade1;
-    this.decade2 = decade2;
-    this.decade3 = decade3;
-    this.movie1 = movie1;
-    this.movie2 = movie2;
-    this.movie3 = movie3;
+    this.year = year;
+    this.actorName = actorName;
 }
 
-const actor1 = new Actor("adam sandler", "1990s", "2000s", "2010s", "Big Daddy (1999)", "50 first dates (2004)", "Uncut gems (2019)")
 
-const actor2 = new Actor("robert de niro", "1970s", "1980s", "1990s", "Taxi driver (1976)", "Raging Bull (1980)", "Goodfellas(1990)")
+const moviesByActor = {
+    "adam sandler": [
+        new Movie("Big Daddy", 1999, "adam sandler"),
+        new Movie("Happy Gilmore", 1996, "adam sandler"),
+        new Movie("Punch-Drunk love", 2002, "adam sandler"),
+        new Movie("50 First dates", 2004, "adam sandler"),
+        new Movie("Uncut gems", 2019, "adam sandler"),
+        new Movie("Grown ups", 2010, "adam sandler"),
+    ],
 
-const actor3 = new Actor("sylvester stallone", "1970s", "1980s", "1990s", "Rocky (1976)", "Rambo (1982)", "Demolition man (1993)")
+    "robert de niro":[
+        new Movie("The Godfather 2", 1974, "robert de niro"),
+        new Movie("Taxi Driver", 1976, "robert de niro"),
+        new Movie("Raging bull", 1980, "robert de niro"),
+        new Movie("Once upon a time in America", 1984, "robert de niro"),
+        new Movie("Goodfellas", 1990, "robert de niro"),
+        new Movie("Heat", 1995, "robert de niro")
+    ],
+
+    "leonardo dicaprio":[
+        new Movie("Titanic", 1997, "leonardo dicaprio"),
+        new Movie("Romeo + Juliet", 1996, "leonardo dicaprio"),
+        new Movie("The Aviator", 2004, "leonardo dicaprio"),
+        new Movie("The Departed", 2006, "leonardo dicaprio"),
+        new Movie("The Wolf of Wallstreet", 2013, "leonardo dicaprio"),
+        new Movie("Shutter Island", 2010, "leonardo dicaprio")
+    ]
+}
+
+function randomMovie(selectedActor){
+    randomMovieResult = selectedActor[Math.floor(Math.random()*selectedActor.length)];
+    alert(`We recommend you to watch ${randomMovieResult.name} (${randomMovieResult.year})`)
+}
+
+
+function getAvailableDecades(selectedActor) {
+    const decades = selectedActor.reduce((decades, movie) => {
+      const decade = Math.floor(movie.year / 10) * 10;
+      if (!decades.includes(decade)) {
+        decades.push(decade);
+      }
+      return decades;
+    }, []);
+  
+    return decades.sort();
+  }
+
+function selectDecade(selectedActor){
+
+    const availableDecades = getAvailableDecades(selectedActor);
+    let userDecade;
+  
+    while (true) {
+      userDecade = prompt(
+        `Select one of the following decades: ${availableDecades.join(", ")}. To skip, type 'skip'.`
+      );
+  
+      if (userDecade === "") {
+        const randomActorMovie = randomMovie(selectedActor);
+        alert(`We recommend you to watch ${randomActorMovie.name} (${randomActorMovie.year})`);
+        return;
+      }
+  
+      if (userDecade === "skip") {
+        break;
+      }
+  
+      userDecade = parseInt(userDecade);
+  
+      if (isNaN(userDecade) || !availableDecades.includes(userDecade)) {
+        alert("Invalid selection. Please try again.");
+      } else {
+        break;
+      }
+    }
+  
+    const moviesByDecade = selectedActor.filter((movie) => {
+      return movie.year >= userDecade && movie.year < userDecade + 10;
+    });
+  
+    randomMovie(moviesByDecade);
+  }
+
 
 alert("Welcome to Movie Randomizer :D")
 
-let userActor = prompt(`Select one of the following actors: Adam Sandler, Robert De Niro or Sylvester Stallone`).toLowerCase();
+let userActor;
 
+do {
+    userActor = prompt(`Select one of the following actors: Adam Sandler, Robert De Niro or Leonardo Dicaprio`).toLowerCase();
+    if (userActor === "adam sandler") {
+            userActor = moviesByActor["adam sandler"];
 
-while (userActor != actor1.name && userActor != actor2.name && userActor != actor3.name) {
-    switch (userActor) {
-        case actor1.name:
-            userActor = actor1.name;
-            break;
+    }else if (userActor === "robert de niro") {
+            userActor = moviesByActor["robert de niro"];
 
-        case actor2.name:
-            userActor = actor2.name;
-            break;
-
-        case actor3.name:
-            userActor = actor3.name;
-            break;
-
-        default:
+    }else if(userActor === "leonardo dicaprio"){
+            userActor = moviesByActor["leonardo dicaprio"];
+    }else{
             alert("Choose one of the options");
-            break;
     }
-    userActor = prompt("Select one of the following actors: Adam Sandler, Robert De Niro or Sylvester Stallone").toLowerCase();
-}
+}while (userActor != moviesByActor["adam sandler"] && userActor != moviesByActor["robert de niro"] && userActor != moviesByActor["leonardo dicaprio"])
 
-if (userActor === actor1.name) {
-    let userDecade = prompt(`Select one of the following decades: ${actor1.decade1}, ${actor1.decade2}, ${actor1.decade3}. To skip press enter.`).toLowerCase()
-    
-    while (userDecade != actor1.decade1 && userDecade != actor1.decade2 && userDecade != actor1.decade3 && userDecade != "") {
-        alert("Please choose one of the options or press enter to skip.");
-        userDecade = prompt(`Select one of the following decades: ${actor1.decade1}, ${actor1.decade2}, ${actor1.decade3}. To skip press enter.`).toLowerCase()
-    }
-    
-    if (userDecade === actor1.decade1) {
-        alert(`We recommend you to watch: ${actor1.movie1}`)
-    } else if (userDecade === actor1.decade2) {
-        alert(`We recommend you to watch: ${actor1.movie2}`)
-    }
-    else if (userDecade === actor1.decade3) {
-        alert(`We recommend you to watch: ${actor1.movie3}`)
-    }
-    else {
-        alert(`We recommend you to watch: ${actor1.movie1}`)
-    }
+selectDecade(userActor)
 
-} else if (userActor === actor2.name) {
-    let userDecade = prompt(`Select one of the following decades: ${actor2.decade1}, ${actor2.decade2}, ${actor2.decade3}. To skip press enter.`).toLowerCase()
-    
-    while (userDecade != actor2.decade1 && userDecade != actor2.decade2 && userDecade != actor2.decade3 && userDecade != "") {
-        alert("Please choose one of the options or press enter to skip.");
-        userDecade = prompt(`Select one of the following decades: ${actor2.decade1}, ${actor2.decade2}, ${actor2.decade3}. To skip press enter.`).toLowerCase()
-    }
 
-    if (userDecade === actor2.decade1) {
-        alert(`We recommend you to watch: ${actor2.movie1}`)
-    } else if (userDecade === actor2.decade2) {
-        alert(`We recommend you to watch: ${actor2.movie2}`)
-    }
-    else if (userDecade === actor2.decade3) {
-        alert(`We recommend you to watch: ${actor2.movie3}`)
-    }
-    else {
-        alert(`We recommend you to watch: ${actor2.movie1}`)
-    }
-} else if (userActor === actor3.name) {
-    let userDecade = prompt(`Select one of the following decades: ${actor3.decade1}, ${actor3.decade2}, ${actor3.decade3}. To skip press enter.`).toLowerCase()
-
-    while (userDecade != actor3.decade1 && userDecade != actor3.decade2 && userDecade != actor3.decade3 && userDecade != "") {
-        alert("Please choose one of the options or press enter to skip.");
-        userDecade = prompt(`Select one of the following decades: ${actor3.decade1}, ${actor3.decade2}, ${actor3.decade3}. To skip press enter.`).toLowerCase()
-    }
-
-    if (userDecade === actor3.decade1) {
-        alert(`We recommend you to watch: ${actor3.movie1}`)
-    } else if (userDecade === actor3.decade2) {
-        alert(`We recommend you to watch: ${actor3.movie2}`)
-    }
-    else if (userDecade === actor3.decade3) {
-        alert(`We recommend you to watch: ${actor3.movie3}`)
-    }
-    else {
-        alert(`We recommend you to watch: ${actor3.movie1}`)
-    }
-
-}
 
 
 
