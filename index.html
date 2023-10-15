@@ -4,9 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Primera preentrega -  Simulador interactivo</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
+    <div class="title">
+        <h1>Movie Randomizer</h1>
+    </div>
+    <main >
+        <div class="instructions">
+            <h2>Select one of the following actors:</h2>
+        </div>
+
+        <div class="container">
+            <div class="actorsCard">
+                <img src="/media/sandler.jpg" alt="">
+                <h2>Adam Sandler</h2>
+                <button class="actors_card_select" id="select_sandler">Select</button>
+            </div>
+            <div class="actorsCard">
+                <img src="/media/robertDeNiro.jpg" alt="">
+                <h2>Robert De Niro</h2>
+                <button class="actors_card_select" id="select_deniro">Select</button>
+            </div>
+            <div class="actorsCard">
+                <img src="/media/diCaprio.webp" alt="">
+                <h2>Leonardo DiCaprio</h2>
+                <button class="actors_card_select" id="select_dicaprio">Select</button>
+            </div>
+        </div>
+        <div class="random_movie">
+            <button class="random_movie_button"> I'll watch anything!</button>
+        </div>
+    </main>
 
     <script src="main.js"></script>
 </body>

@@ -1,0 +1,56 @@
+/* Reset */
+*, *::before, *::after {
+    box-sizing: border-box;
+  }
+ 
+  * {
+    margin: 0;
+  }
+
+  body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+  }
+
+  input, button, textarea, select {
+    font: inherit;
+  }
+
+body{
+    min-height: 100vh;
+}
+
+main{
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+.container {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 1;
+    gap: 2rem;
+    margin: 2rem;
+    max-width: 70%;
+}
+
+.actorsCard {
+    display: flex;
+    flex-flow: column;
+    background-color: gray;
+    border-radius: 1rem;
+    text-align: center;
+    overflow: hidden;
+}
+
+.actorsCard img{
+
+    
+}

@@ -94,14 +94,25 @@ function selectDecade(selectedActor){
     randomMovie(moviesByDecade);
   }
 
-
-alert("Welcome to Movie Randomizer :D")
-
 let userActor;
 
+const sandlerSelected = document.getElementById("select_sandler");
+const deniroSelected = document.getElementById("select_deniro");
+const dicaprioSelected = document.getElementById("select_dicaprio");
+
+sandlerSelected.addEventListener("click", function(){
+  userActor = moviesByActor["adam sandler"];
+});
+deniroSelected.addEventListener("click", function(){
+  userActor = moviesByActor["robert de niro"];
+});
+dicaprioSelected.addEventListener("click", function(){
+  userActor = moviesByActor["leonardo dicaprio"];
+});
 do {
     userActor = prompt(`Select one of the following actors: Adam Sandler, Robert De Niro or Leonardo Dicaprio`).toLowerCase();
     if (userActor === "adam sandler") {
+            
             userActor = moviesByActor["adam sandler"];
 
     }else if (userActor === "robert de niro") {
