@@ -1,3 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Young+Serif&display=swap');
+:root{
+  --clr-bg: #03045E;
+  --clr-main: #0077B6;
+  --clr-accnt: #CAF0F8;
+  --clr-font: #90E0EF;
+  --clr-font-accnt: #ffffff;
+  --font-main: 'Roboto', sans-serif;
+  --font-accnt: 'Young Serif', serif;
+}
+
 /* Reset */
 *, *::before, *::after {
     box-sizing: border-box;
@@ -23,34 +34,98 @@
 
 body{
     min-height: 100vh;
+    background-color: var(--clr-bg);
+}
+
+.title{
+  text-align: center;
+  padding: 2rem;
+  font-family: var(--font-accnt);
+  color: var(--clr-font-accnt);
 }
 
 main{
     display: flex;
     flex-flow: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     min-height: 100vh;
+    font-family: var(--font-main);
 }
 .container {
     display: grid;
     grid-auto-flow: column;
-    grid-auto-columns: 1;
+    grid-auto-columns: minmax(0, 1fr);
     gap: 2rem;
     margin: 2rem;
-    max-width: 70%;
+    max-width: 60%;
 }
 
 .actorsCard {
     display: flex;
     flex-flow: column;
+    justify-content: center;
     background-color: gray;
-    border-radius: 1rem;
+    border-radius: 1.5rem 0;
     text-align: center;
     overflow: hidden;
+    padding: 1.5rem;
+    background-color: var(--clr-main);
 }
 
 .actorsCard img{
+  border-radius: 1.5rem 0;
+}
 
-    
+.instructionsStyle{
+  color: var(--clr-font-accnt);
+  font-family: var(--font-main);
+  margin-bottom: 2rem;
+}
+
+.actorsCard h2{
+  padding: 1rem 0;
+  font-family: var(--font-accnt);
+  color: var(--clr-font-accnt);
+}
+
+.btn {
+  border: none;
+  cursor: pointer;
+    padding: 0.5rem;
+    margin: 0 1rem;
+    border-radius: 2rem;
+    font-size: 1.2rem;
+    background: var(--clr-accnt);
+  color: var(--clr-main);
+  filter: drop-shadow(0);
+  font-weight: bold;
+}
+
+.anyRandomMovie{
+  max-width: 40%;
+  justify-self: center;
+}
+
+.anyRandomMovie h3{
+  color: var(--clr-font);
+}
+
+.random_movie{
+  margin-bottom: 2rem;
+}
+
+.cardInstructions{
+  background-color: var(--clr-bg);
+  
+}
+
+.cardInstructions h2{
+  color: var(--clr-font-accnt);
+  font-family: var(--font-main);  
+} 
+
+.btnDecades{
+  margin: 0.5rem 0;
+
 }

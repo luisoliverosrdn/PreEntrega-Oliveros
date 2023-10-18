@@ -7,33 +7,34 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="title">
-        <h1>Movie Randomizer</h1>
-    </div>
+    
     <main >
-        <div class="instructions">
-            <h2>Select one of the following actors:</h2>
+        <div class="title">
+            <h1>Movie Randomizer</h1>
+        </div>
+        <div id="instructionsContainer">
+            <h2 class="instructionsStyle" id="instructions">Select one of the following actors:</h2>
         </div>
 
-        <div class="container">
-            <div class="actorsCard">
-                <img src="/media/sandler.jpg" alt="">
+        <div class="container" id="container">
+            <div class="actorsCard" id="sandler">
+                <img src="media/sandler.jpg" alt="">
                 <h2>Adam Sandler</h2>
-                <button class="actors_card_select" id="select_sandler">Select</button>
+                <button class="btn" id="select_sandler">Select</button>
             </div>
-            <div class="actorsCard">
-                <img src="/media/robertDeNiro.jpg" alt="">
+            <div class="actorsCard" id="deniro">
+                <img src="media/robertDeNiro.jpg" alt="">
                 <h2>Robert De Niro</h2>
-                <button class="actors_card_select" id="select_deniro">Select</button>
+                <button class="btn" id="select_deniro">Select</button>
             </div>
-            <div class="actorsCard">
-                <img src="/media/diCaprio.webp" alt="">
+            <div class="actorsCard" id="dicaprio">
+                <img src="media/diCaprio.webp" alt="">
                 <h2>Leonardo DiCaprio</h2>
-                <button class="actors_card_select" id="select_dicaprio">Select</button>
+                <button class="btn" id="select_dicaprio">Select</button>
             </div>
         </div>
         <div class="random_movie">
-            <button class="random_movie_button"> I'll watch anything!</button>
+            <button class="btn" id="randomMovieBtn"> I'll watch anything!</button>
         </div>
     </main>
 
