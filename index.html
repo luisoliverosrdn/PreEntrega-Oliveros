@@ -1,43 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Primera preentrega -  Simulador interactivo</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    
-    <main >
-        <div class="title">
-            <h1>Movie Randomizer</h1>
-        </div>
-        <div id="instructionsContainer">
-            <h2 class="instructionsStyle" id="instructions">Select one of the following actors:</h2>
-        </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Primera preentrega - Simulador interactivo</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <div class="title">
+        <h1>Movie Randomizer</h1>
+      </div>
 
-        <div class="container" id="container">
-            <div class="actorsCard" id="sandler">
-                <img src="media/sandler.jpg" alt="">
-                <h2>Adam Sandler</h2>
-                <button class="btn" id="select_sandler">Select</button>
-            </div>
-            <div class="actorsCard" id="deniro">
-                <img src="media/robertDeNiro.jpg" alt="">
-                <h2>Robert De Niro</h2>
-                <button class="btn" id="select_deniro">Select</button>
-            </div>
-            <div class="actorsCard" id="dicaprio">
-                <img src="media/diCaprio.webp" alt="">
-                <h2>Leonardo DiCaprio</h2>
-                <button class="btn" id="select_dicaprio">Select</button>
-            </div>
+      <div class="container" id="container">
+        <div class="container" id="containerSearchBar">
+          <div class="searchBar">
+            <input
+              type="text"
+              class="searchBar"
+              id="searchBar"
+              placeholder="Search your favorite actor, director, crew member..."
+            />
+            <button class="searchBtn" id="searchBtn">Search</button>
+          </div>
+          
         </div>
-        <div class="random_movie">
-            <button class="btn" id="randomMovieBtn"> I'll watch anything!</button>
-        </div>
+        <div class="container_actors" id="containerActors"></div>
+      </div>
+      <div class="random_movie" id="btn_container">
+        <button class="btn" id="randomMovieBtn">I'll watch anything!</button>
+      </div>
     </main>
 
     <script src="main.js"></script>
-</body>
+  </body>
 </html>
